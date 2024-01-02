@@ -18,6 +18,7 @@
 \renewcommand\cftsecfont{\mdseries}
 \renewcommand\cftsecpagefont{\mdseries}
 
+% Настройки шрифта
 \usepackage{fontspec}
 \setmainfont{CMU Serif}
 \setsansfont{CMU Sans Serif}
@@ -49,6 +50,7 @@
 \newcommand{\rk}{\mathrm{rk}\,}
 \newcommand{\tr}{\mathrm{tr}\,}
 \newcommand*{\bord}{\multicolumn{1}{c|}{}}
+\newcommand{\bigzero}{\makebox(0, 0){\Huge 0}}
 
 % Отступы между абзацами
 \setlength{\parskip}{1ex}
@@ -188,6 +190,7 @@
     bottomrule=0mm, rightrule=0mm,
     colback=orange!10,
     colframe=orange!10!white]
+    \setlength{\parindent}{17pt}
 }{
 \end{tcolorbox}
 }

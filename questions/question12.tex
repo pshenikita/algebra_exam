@@ -1,0 +1,44 @@
+\section{Линейное отображение. Его матрица в фиксированных базисах. Образ заданного вектора. Изоморфизм. Любое конечномерное пространство изоморфно пространству строк}
+
+\begin{definition}
+    Отображение $\varphi: U \rightarrow V$ ($U$ и $V$ --- векторные пространства) называется \textbf{линейным}, если $\varphi(u_1 + u_2) = \varphi(u_1) + \varphi(u_2)$ и $\varphi(\lambda u) = \lambda\varphi(u)$.
+\end{definition}
+
+\begin{definition}
+    Фиксируем базис $e = \{e_1, \ldots, e_n\}$ в $U$ и базис $f = \{f_1, \ldots, f_m\}$. Матрица $A(\varphi, e, f) = (a_{ij})$, по столбцам которой стоят координаты образов базисных векторов из $e$ в базисе $f$, называется \textbf{матрицей линейного отображения $\varphi$}.
+\end{definition}
+
+\begin{remark}
+    Размеры матрицы линейного отображения --- $m \times n$.
+\end{remark}
+
+\begin{statement}
+    $\varphi(v) = A \cdot v$, где $A$ --- матрица линейного отображения $\varphi$.
+\end{statement}
+
+\begin{proof}
+    С одной стороны,
+    $$
+    \varphi(v) = \varphi\left(\sum_i^kv_ie_i\right) = \sum_i^kv_i\varphi(e_i).
+    $$
+
+    А с другой стороны,
+    $$
+    A \cdot v = 
+    \begin{pmatrix}
+        f(e_1) & f(e_2) & \ldots & f(e_k)
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+        v_1\\
+        v_2\\
+        \vdots\\
+        v_k
+    \end{pmatrix} = \sum_i^kv_i\varphi(e_i).
+    $$
+
+    Отсюда сразу следует $\varphi(v) = A \cdot v$.
+\end{proof}
+
+Про изоморфизмы было написано ранее: см. определение 4.2 и лемму 8.1.
+
+

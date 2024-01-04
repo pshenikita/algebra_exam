@@ -1,4 +1,4 @@
-algebra.pdf: algebra.tex questions/question*
+algebra.pdf: algebra.tex questions/question* preamble.sty
 	lualatex $<
 
 clean:

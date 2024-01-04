@@ -1,0 +1,51 @@
+\section{Свойства операций над матрицами. Связь с транспонированием}
+
+Легко видеть, что биекция, существование которой доказывается в теореме 13.1, является линейным отображением (из определения операций над матрицами). Также легко видеть, что множество линейных отображений --- это векторное пространство. А значит, и множество матриц фиксированного размера является векторным простраством. При этом, $\dim \underset{m \times n}{\mathrm{Mat}} = mn$.
+
+\begin{theorem}[Свойства умножения матриц]
+    \begin{enumerate}[nolistsep]
+        \item $(AB)C = A(BC)$
+        \item $A(B + C) = AB + AC$
+        \item $(A + B)C = AC + BC$
+        \item $\lambda(AB) = (\lambda A)B = A(\lambda B)$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    В силу теоремы 13.1 нам достаточно показать эти свойства для соответствующих операций над линейными отображениями. 
+    \begin{enumerate}
+        \item Пусть $\varphi: W \rightarrow L$, $\psi: V \rightarrow W$, $\xi: U \rightarrow V$. Тогда
+            $$
+            ((\varphi \circ \psi) \circ \xi)(u) = (\varphi \circ \psi)(\xi(u)) = \varphi(\psi(\xi(u))) = \varphi((\psi \circ \xi)(u)) = (\varphi \circ (\psi \circ \xi))(u),
+            $$
+            отсюда $(\varphi \circ \psi) \circ \xi = \varphi \circ (\psi \circ \xi)$.
+        \item Пусть $\varphi: V \rightarrow W$, $\psi: V \rightarrow W$ и $\xi: U \rightarrow V$. Тогда
+            $$
+            ((\varphi + \psi) \circ \xi)(u) = (\varphi + \psi)(\xi(u)) = \varphi(\xi(u)) + \psi(\xi(u)) = (\varphi \circ \xi)(u) + (\psi \circ \xi)(u).
+            $$
+        \item Аналогично предыдущему пункту.
+        \item Пусть $\varphi: V \rightarrow W$, $\psi: U \rightarrow V$. Тогда
+            $$
+            (\lambda(\varphi \circ \psi))(u) = \lambda\varphi(\psi(u)) = (\lambda\varphi \circ \psi)(u) = (\varphi \circ \lambda\psi)(u).
+            $$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Связь с транспонированием]
+    \begin{enumerate}[nolistsep]
+        \item $(A + B)^T = A^T + B^T$
+        \item $(\lambda A)^T = \lambda A^T$
+        \item $(AB)^T = B^TA^T$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Эти свойства докажем, расписав их по формулам, которые мы вывели ранее:
+    \begin{enumerate}
+        \item $\displaystyle (A + B)^T_{ij} =  (A + B)_{ji} = a_{ji} + b_{ji} = (A^T + B^T)_{ij}$.
+        \item $\displaystyle (\lambda A)^T = (\lambda A)_{ji} = (\lambda a_{ij})^T = \lambda a_{ji} = (\lambda A)^T$.
+        \item $\displaystyle (AB)^T_{ij} = (AB)_{ji} = \sum_{t = 1}^m b_{jt}a_{ti} = (B^TA^T)_{ij}$.
+    \end{enumerate}
+\end{proof}
+
+

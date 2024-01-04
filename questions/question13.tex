@@ -1,0 +1,100 @@
+\section{Операции над линейными отображениями и над матрицами, связь между ними. Матричная запись СЛУ}
+
+\begin{remark}
+    Здесь векторные пространства $U$, $V$, $W$ взяты над одним полем $\mathcal{K}$ и, говоря <<число>>, имеем в виду произвольный элемент $\mathcal{K}$.
+\end{remark}
+
+\begin{definition}[Операции над линейными отображениями]
+    Пусть $\varphi: U \rightarrow V, \psi: U \rightarrow V, \xi: V \rightarrow W$. Определим следующие операции над ними:
+    \begin{enumerate}[nolistsep]
+        \item \textbf{Сумма}. $(\varphi + \psi)(u) \vcentcolon = \varphi(u) + \psi(u)$. Проверим, что $\varphi + \psi$ линейно:
+            $$
+            \begin{array}{c}
+                (\varphi + \psi)(u_1 + u_2) = \varphi(u_1 + u_2) + \psi(u_1 + u_2) = \varphi(u_1) + \psi(u_1) + \varphi(u_2) + \psi(u_2) = (\varphi + \psi)(u_1) + (\varphi + \psi)(u_2),\\
+                (\varphi + \psi)(\lambda u) = \varphi(\lambda u) + \psi(\lambda u) = \lambda(\varphi(u) + \psi(u)) = \lambda \cdot (\varphi + \psi)(u).
+            \end{array}
+            $$
+        \item \textbf{Умножение на число}. $(c\varphi)(u) = c \cdot \varphi(u)$. Нетрудно проверить, что $c\varphi$ линейно.
+        \item \textbf{Композиция}. $(\xi \circ \varphi)(u) = \xi(\varphi(u))$. Проверим линейность:
+            $$
+            \begin{array}{c}
+                (\xi \circ \varphi)(u_1 + u_2) = \xi(\varphi(u_1 + u_2)) = \xi(\varphi(u_1) + \varphi(u_2)) = \xi(\varphi(u_1)) + \xi(\varphi(u_2)) = (\xi \circ \varphi)(u_1) + (\xi \circ \varphi)(u_2),\\
+                (\xi \circ \varphi)(\lambda u) = \xi(\varphi(\lambda u)) = \xi(\lambda\varphi(u)) = \lambda\xi(\varphi(u)) = \lambda(\xi \circ \varphi)(u).
+            \end{array}
+            $$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Операции над матрицами]
+    Пусть $A$, $B$ и $C$ --- матрицы линейных преобразований $\varphi$, $\psi$ и $\xi$ соответственно в фиксированных базиса $e = \{e_1, \ldots, e_n\}$ в $U$, $f = \{f_1, \ldots, f_m\}$ в $V$, $s = \{s_1, \ldots, s_k\}$ в $W$. Определим следующие операции над ними:
+    \begin{enumerate}
+        \item \textbf{Суммой матриц} $A$ и $B$ называется матрица преобразования $\varphi + \psi$. Обозначается $A + B$. Заметим, что суммировать можно лишь матрицы одинакового размера.
+        \item \textbf{Произведением числа $\lambda$ и матрицы} $A$ называется матрица преобразования $\lambda\varphi$. Обозначается $\lambda A$.
+        \item \textbf{Произведением матриц} $C$ и $A$ называется матрица преобразования $\xi \circ \varphi$. Обозначается $CA$. Заметим, что умножать можно лишь матрицы размеров $k \times m$ и $m \times n$.
+    \end{enumerate}
+\end{definition}
+
+\begin{statement}
+    Формулы для операций над матрицами $A(\varphi, e, f) = (a_{ij})$ и $B(\psi, e, f) = (b_{ij})$ и $C(\xi, f, s) = (c_{ij})$ (обозначения --- из предыдущих определений) пишутся так:
+    \begin{enumerate}[nolistsep]
+        \item $(A + B)_{ij} = (a_{ij} + b_{ij})$ (при этом $\underset{m \times n}{A}$ и $\underset{m \times n}{B}$);
+        \item $(\lambda A)_{ij} = (\lambda a_{ij})$;
+        \item $\displaystyle (CA)_{ij} = \sum_{t = 1}^m c_{it}\cdot a_{tj}$ (при этом $\underset{m \times n}{A}$ и $\underset{k \times m}{C}$);
+    \end{enumerate}
+\end{statement}
+
+\begin{proof}
+    Столбца матрицы линейного преобразования --- это образы базисных векторов, поэтому чтобы понять, как выглядит матрица преобразования, достаточно посмотреть на то, куда переходит базис. Разберём отдельно все операции:
+    \begin{enumerate}
+        \item Сложение:
+            $$
+            (\varphi + \psi)(e_j) = \varphi(e_j) + \psi(e_j) = \sum_{i = 1}^m a_{ij}f_i + \sum_{i = 1}^m a_{ij}f_i = \sum_{i = 1}^m(a_{ij} + b_{ij}f_i).
+            $$
+
+            Коэффициенты при $f_i$ и стоит в новой матрице на месте $(i, j)$. Таким образом, $(A + B)_{ij} = (a_{ij} + b_{ij})$.
+
+        \item Умножение на число:
+            $$
+            (\lambda\varphi)(e_j) = \lambda\left(\sum_{i = 1}^m a_{ij}f_i\right) = \sum_{j = 1}^m(\lambda a_{ij})f_i,
+            $$
+            отсюда $(\lambda A)_{ij} = (\lambda a_{ij})$.
+
+        \item Произведение:
+            $$
+            (\xi \circ \varphi)(e_j) = \xi\left(\sum_{t = 1}^ma_{tj}f_t\right) = \sum_{t = 1}^ma_{tj}\xi(f_t) = \sum_{t = 1}^ma_{tj}\left(\sum_{i = 1}^k c_{it}s_i\right) = \sum_{t = 1}^m\sum_{i = 1}^ka_{tj}c_{it}s_i = \sum_{i = 1}^k\left(\sum_{t = 1}^m c_{it}a_{tj}\right)s_i,
+            $$
+            отсюда $\displaystyle (CA)_{ij} = \sum_{t = 1}^m c_{it}\cdot a_{tj}$.
+    \end{enumerate}
+\end{proof}
+
+Теперь СЛУ с матрицей коэффициентов $A$, неизвестными
+$X = 
+\begin{pmatrix}
+    x_1\\
+    x_2\\
+    \vdots\\
+    x_n
+\end{pmatrix}
+$ и свободными членами
+$
+B = 
+\begin{pmatrix}
+    b_1\\
+    b_2\\
+    \vdots\\ 
+    b_m
+\end{pmatrix}
+$ можно записать так:
+$$ AX = B. $$
+
+\begin{theorem}
+    Соответствие $\varphi \rightarrow A(\varphi, e, f)$ задаёт биекцию между линейными отображениями $U \rightarrow V$ и матрицами $m \times n$.
+\end{theorem}
+
+\begin{proof}
+    В курсе аналитической геометрии мы доказывали (см. билет про скалярное произведение в моём файле) теорему о том, что $f(\ast) = (u, \ast)$ --- общий вид линейной функции. Причём, в доказательстве мы предъявляли вектор $u = (\varphi(e_1), \ldots, \varphi(e_n))$. Отсюда сразу следует утверждение теоремы, ведь есть расписать координаты векторов $\varphi(e_i)$ в базисе $f$ по столбцам, $u$ станет в точности матрицей линейного преобразования $\varphi$ в фиксированных базисах $e$ и $f$.
+\end{proof}
+
+
+
+

@@ -1,0 +1,144 @@
+\section{Подстановки и перестановки. Их количество. Произведение подстановок, его свойства. Разложение подстановки на произведение независимых циклов}
+
+\begin{definition}
+    Зафиксируем множество $\Omega_n = \{1, 2, \ldots, n\}$. \textbf{Подстановкой} будем называть биекцию $\sigma : \Omega_n \rightarrow \Omega_n$, а \textbf{перестановкой} --- упорядоченный набор элементов $\Omega_n$. Обозначать подстановки будем так:
+    $$
+    \begin{pmatrix}
+        1 & \ldots & i & \ldots & n\\
+        \sigma(1) & \ldots & \sigma(i) & \ldots & \sigma(n)
+    \end{pmatrix}.
+    $$
+\end{definition}
+
+\begin{remark}
+    Между перестановками и подстановками можно установить биекцию, поэтому эти понятия взаимозаменяемы.
+\end{remark}
+
+\begin{definition}
+    \textbf{Произведением подстановок} называется их композиция.
+\end{definition}
+
+\begin{theorem}
+    Перестановки порядка $n$ образуют группу. Она обозначается $S_n$.
+\end{theorem}
+
+\begin{proof}
+    Проверим выполнение всех аксиом:
+    \begin{enumerate}
+        \item Ассоциативность выполняется, т.\,к. она выполняется для всех отображений
+        \item Тождественная подстановка
+            $$
+            \varepsilon = 
+            \begin{pmatrix}
+                1 & \ldots & i & \ldots & n\\
+                1 & \ldots & i & \ldots & n
+            \end{pmatrix}
+            $$
+            является нейтральным элементом.
+        \item Если поменять местами две строки в записи перестановки $\sigma$, то мы получим такую, которая в композиции с $\sigma$ даст тождественную. Это и есть обратная подстановка.
+    \end{enumerate}
+\end{proof}
+
+\begin{statement}
+    $|S_n| = n!$
+\end{statement}
+
+\begin{proof}
+    Нам нужно выбрать $n$ элементов из множества $\{1, 2, \ldots, n\}$. У нас есть $n$ способов выбрать первый элемент, затем $n - 1$ способов выбрать второй элемент и т.\,д. Таким образом, количество способов выбрать уникальную подстановку равно
+    $$
+    n \cdot (n - 1) \cdot \ldots \cdot 1 = n!
+    $$
+\end{proof}
+
+\begin{remark}
+    Из лекций Ю.\,Г. Прохорова. В общем случае перестановки не коммутируют. Однако есть условие, при котором это свойство всё-таки выполняется.
+
+    \begin{definition}
+        Пусть $\sigma \in S_n$. Элемент $i \in \Omega_n$ называется \textbf{неподвижным}, если $\sigma(i) = i$.
+    \end{definition}
+
+    Всё множество $\Omega_n$ разбивается на два подмножества:
+    $$
+    \Omega_n = F(\sigma) \sqcup M(\sigma),
+    $$
+
+    где $F(\sigma)$ --- множество неподвижных элементов, а $M(\sigma)$ --- подвижных.
+
+    \begin{lemma}
+        $i \in M(\sigma) \Rightarrow \sigma(i) \in M(\sigma)$.
+    \end{lemma}
+
+    \begin{proof}
+        Действительно, пусть $i \in M(\sigma)$ (обозначим $\sigma(i) = j$) и $\sigma(i) \in F(\sigma)$. Тогда
+        $$
+        \sigma(i) = \sigma(\sigma(i)) = \sigma(j),
+        $$
+        при этом $i \ne j$, однако $\sigma$ --- биекция. Противоречие.
+    \end{proof}
+
+    \begin{theorem}
+        Если $M(\sigma_1) \cap M(\sigma_2) = \varnothing$, то $\sigma_1 \circ \sigma_2 = \sigma_2 \circ \sigma_1$.
+    \end{theorem}
+
+    \begin{proof}
+        Множества $F(\sigma_1)$ и $M(\sigma_1)$ не пересекаются и полностью покрывают собой множество $\Omega_n$. То же верно и для множеств $F(\sigma_2)$ и $M(\sigma_2)$. Из этого следует, что $M(\sigma_2) \subseteq F(\sigma_1)$ и $M(\sigma_1) \subseteq F(\sigma_2)$ (чтобы убедиться в этом, можно нарисовать картинку).
+
+        Не ограничивая общности, пусть $i \in M(\sigma_1)$. Тогда $i \notin M(\sigma_2)$ и, как следствие, $i \in F(\sigma_2)$. А по предыдущей лемме, $\sigma_1(i) \in M(\sigma_1)$ и аналогично получаем $\sigma_1(i) \in F(\sigma_2)$. Итак,
+        $$
+        (\sigma_1 \circ \sigma_2)(i) = \sigma_1(\sigma_2(i)) = \sigma_1(i),\quad(\sigma_2 \circ \sigma_1)(i) = \sigma_2(\sigma_1(i)) = \sigma_1(i).
+        $$
+        Таким образом, значения $\sigma_1 \circ \sigma_2$ и $\sigma_2 \circ \sigma_1$ совпадают в каждой точке, а значит, они равны.
+    \end{proof}
+\end{remark}
+
+\begin{definition}
+    Подстановка $\sigma \in S_n$ называется \textbf{циклом}, если существуют числа $i_1, \ldots, i_k \in \Omega_n$, такие что $\sigma(i_1) = i_1, \sigma(i_2) = i_3, \ldots, \sigma(i_{k - 1}) = i_k, \sigma(i_k) = i_1$. Остальные элементы отображаются сами в себя. При этом, $k$ называется \textbf{длиной цикла}. Сокращённая запись цикла --- $[i_1, i_2, \ldots, i_k]$.
+\end{definition}
+
+\begin{definition}
+    Циклы $\sigma_1$ и $\sigma_2$ называются \textbf{независимыми}, если
+    $$
+    M(\sigma_1) \cap M(\sigma_2) = \varnothing.
+    $$
+\end{definition}
+
+\begin{remark}
+    Такие циклы, как уже доказано, коммутируют.
+\end{remark}
+
+\begin{theorem}
+    $\forall\!\:\sigma \in S_n$ существуют независимые циклы $\sigma_1, \ldots, \sigma_k$ такие, что
+    $$
+    \sigma = \sigma_1 \cdot \ldots \cdot \sigma_N.
+    $$
+    при этом такое разложение единственно с точностью до порядка множителей.
+\end{theorem}
+
+\begin{proof}
+    Доказательство проведём индукцией по $|M(\sigma)|$. База индукции очевидна, докажем шаг. Рассмотрим какой-то $i \in \Omega_n$ и введём следующие обозначения:
+    $$
+    i_0 \vcentcolon = i,\quad i_1 \vcentcolon = \sigma(i),\quad i_2 \vcentcolon = \sigma^2(i),\quad \ldots,\quad i_k \vcentcolon = \sigma^k(i).
+    $$
+
+    Иными словами, $i_k = \sigma(i_{k - 1})$. Элементов $i_j$ бесконечно много, однако множество $\Omega_n$, в которое они все входят, конечно. А потому последовательность должна с какого-то момента зациклиться, при этом наименьший положительный период $r$ не превосходит $n$. Итак, имеем
+    $$
+    \sigma^t(i) = \sigma^{t + r}(i),\quad \varepsilon(i) = \sigma^r(i),\eqno(\ast)
+    $$
+    отсюда $\sigma^r(i) = i$, причём $r$ --- минимальное положительное число с таким свойством. Утверждается, что тогда числа $i_0, i_1, \ldots, i_{r - 1}$ попарно различны. Действительно, если это не так, то, произведя заново выкладку $(\ast)$, придём к противоречию с минимальностью $r$. Теперь рассмотрим перестановку
+    $$
+    \widehat{\sigma} = [i_0, \ldots, i_{r - 1}]^{-1} \circ \sigma.
+    $$
+    Заметим, что
+    $$
+    \begin{array}{l}
+        \widehat{\sigma}(i_0) = [i_{r - 1}, \ldots, i_0](\sigma(i_0)) = [i_{r - 1}, \ldots, i_0](i_1) = i_0,\\
+        \widehat{\sigma}(i_1) = [i_{r - 1}, \ldots, i_0](\sigma(i_1)) = [i_{r - 1}, \ldots, i_0](i_2) = i_1,\\
+        \qquad\qquad\qquad\qquad\qquad\qquad\vdots\\
+        \widehat{\sigma}(i_{r - 1}) = [i_{r - 1}, \ldots, i_0](\sigma(i_{r - 1})) = [i_{r - 1}, \ldots, i_0](i_0) = i_{r - 1}.
+    \end{array}
+    $$
+
+    Значит, $i_1, \ldots, i_{r - 1} \in F(\widehat{\sigma})$. Заметим при этом, что образы остальных элементов такие же, ведь цикл $[i_{r - 1}, \ldots, i_0]$ никуда их не переставляет: $\widehat{\sigma}(j) = \sigma(j)$ при $j \notin \{i_0, \ldots, i_{r - 1}\}$. Проанализируем, что мы получили. У подстановки $\sigma$ элементы $i_0, \ldots, i_{r - 1}$ были подвижными, т.\,к., из уже доказанного, числа $\{i_0, \ldots, i_{r - 1}\}$ попарно различны. А у новой подстановки $\widehat{\sigma}$ эти элементы стали неподвижными, а остальные --- какими были, такими и остались. Значит, $|M(\widehat{\sigma})| < |M(\sigma)|$, пока $\sigma$ не тождественна. Значит, по предположению индукции, для $\widehat{\sigma}$ существует разложение на независимые циклы. А в произведении с циклом $[i_{r - 1}, \ldots, i_0]$ они дадут $\sigma$.
+\end{proof}
+
+

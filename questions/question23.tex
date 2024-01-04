@@ -1,0 +1,44 @@
+\section{Формула определителя квадратной матрицы. Определитель транспонированной матрицы. Линейность и кососимметричность определителя как функции от строк и столбцов матрицы}
+
+\begin{definition}
+    \textbf{Определителем} квадратной матрицы $A = (a_{ij})$ порядка $n$ называется число
+    $$
+    \det A = \sum_{\sigma \in S_n} \sgn\sigma \cdot a_{1\sigma(1)}\ldots a_{n\sigma(n)}.
+    $$
+\end{definition}
+
+\begin{theorem}
+    $\det A^T = \det A$.
+\end{theorem}
+
+\begin{remark}
+    Как следствие, любой свойство определителя матрицы по отношению к её строкам верно также и для её столбцов.
+\end{remark}
+
+\begin{proof}
+    Заметим, что т.\,к. $S_n$ --- группа, то если $\sigma$ пробегает $S_n$ то и $\sigma^{-1}$ пробегает $S_n$.
+    $$
+    \det A^T = \sum_{\sigma \in S_n} \sgn\sigma \cdot a_{\sigma(1)1}\ldots a_{\sigma(n)n} = \big\{\delta \vcentcolon= \sigma^{-1}\big\} = \sum_{\delta \in S_n} \sgn\delta \cdot a_{1\delta(1)} \ldots a_{n\delta(n)} = \det A.
+    $$
+\end{proof}
+
+\begin{theorem}
+    Определитель является полилинейной кососимметричной функцией строк матрицы.
+\end{theorem}
+
+\begin{proof}
+    Линейность определителя по каждой из строк матрицы вытекает из того, что для любого $i$ его можно представить в виде
+    $$
+    \det A = \sum_ja_{ij}u_j,
+    $$
+    где $u_1, \ldots, u_n$ не зависят от элементов $i$-ой строки матрицы (видно из формулы определителя). 
+
+    Для проверки кососимметричности посмотрим, что происходит при перестановке $i$-ой и $j$-ой строк матрицы. Из доказательства теоремы 21.4 видно, что отображение $\varphi: \sigma \in S_n \mapsto \sigma\circ[i, j] \in S_n$ биективно, при этом $\sgn\sigma = -\sgn\varphi(\sigma)$ и $\varphi(\sigma) = \varphi^{-1}(\sigma)$. Поэтому подстановки можно разбить на такие пары $(\sigma, \varphi(\sigma))$ (как следствие, если $\sigma$ пробегает $S_n$, то и $\varphi(\sigma)$ её пробегает). Обозначим за $A_{(i) \leftrightarrow (j)}$ матрицу, у которой переставлены местами строки с номерами $i$ и $j$. Тогда
+    $$
+    \begin{array}{c}\displaystyle
+        \det A_{(i) \leftrightarrow (j)} = \sum_{\sigma \in S_n}\sgn\sigma \cdot a_{1\sigma(1)}\ldots a_{i\sigma(j)}\ldots a_{j\sigma(i)} \ldots a_{n\sigma(n)} = {}\\\displaystyle{} = \big\{\delta \vcentcolon= \varphi(\sigma)\big\} = \sum_{\delta \in S_n}(-\sgn\delta)\cdot a_{1\delta(1)}\ldots a_{i\delta(i)}\ldots a_{j\delta(j)} \ldots a_{n\delta(n)} = -\det A.
+    \end{array}
+    $$
+\end{proof}
+
+

@@ -44,13 +44,16 @@
 
 % Часто используемые обозначения
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\rk}{\mathrm{rk}\,}
 \newcommand{\tr}{\mathrm{tr}\,}
+\newcommand{\sgn}{\mathrm{sgn}\,}
 \newcommand*{\bord}{\multicolumn{1}{c|}{}}
 \newcommand{\bigzero}{\makebox(0, 0){\Huge 0}}
+\newcommand{\bigast}{\makebox(0, 0){\Huge \ast}}
 
 % Отступы между абзацами
 \setlength{\parskip}{1ex}
@@ -70,7 +73,7 @@
 
 % Оболочка для теоремы
 \newcounter{theorem}[section]
-\newenvironment{theorem}[1][]{\smallskip
+\newenvironment{theorem}[1][]{\par\smallskip
 \refstepcounter{theorem}
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Теорема \thesection.\thetheorem.}
@@ -92,7 +95,7 @@
 
 % Оболочки для леммы, предложения и утверждения
 \newcounter{lemma}[section]
-\newenvironment{lemma}[1][]{\smallskip
+\newenvironment{lemma}[1][]{\par\smallskip
 \refstepcounter{lemma}
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Лемма \thesection.\thelemma.}
@@ -103,7 +106,7 @@
     \par\smallskip
 }
 
-\newenvironment{proposal}[1][]{\smallskip
+\newenvironment{proposal}[1][]{\par\smallskip
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Предложение.}
     \else
@@ -113,7 +116,7 @@
     \par\smallskip
 }
 
-\newenvironment{statement}[1][]{\smallskip
+\newenvironment{statement}[1][]{\par\smallskip
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Утверждение.}
     \else
@@ -125,7 +128,7 @@
 
 % Оболочка для определения
 \newcounter{definition}[section]
-\newenvironment{definition}[1][]{\smallskip
+\newenvironment{definition}[1][]{\par\smallskip
 \refstepcounter{definition}
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Определение \thesection.\thedefinition.}
@@ -137,7 +140,7 @@
 }
 
 % Оболочки для задач
-\newenvironment{remark}[1][]{\smallskip
+\newenvironment{remark}[1][]{\par\smallskip
     \ifx&#1&
         \smallskip\noindent{\bfseries\sffamily Примечание.}
     \else
@@ -148,7 +151,7 @@
 }
 
 \newcounter{problem}
-\newenvironment{problem}[1][]{\smallskip
+\newenvironment{problem}[1][]{\par\smallskip
 \refstepcounter{problem}
     \ifx&#1&
         \noindent{\bfseries\sffamily Задача \theproblem.}

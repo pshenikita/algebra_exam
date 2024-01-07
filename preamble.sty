@@ -39,6 +39,9 @@
 \usetikzlibrary{decorations.pathreplacing, calligraphy}
 \tikzset{>=latex}
 
+% Asymptote для иллюстраций
+\usepackage{asymptote}
+
 % Римские числа из обычных
 \newcommand{\rnum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 
@@ -51,6 +54,12 @@
 \newcommand{\rk}{\mathrm{rk}\,}
 \newcommand{\tr}{\mathrm{tr}\,}
 \newcommand{\sgn}{\mathrm{sgn}\,}
+\renewcommand{\mod}{\mathrm{mod}\,}
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\ord}{\mathrm{ord}\,}
+\renewcommand{\gcd}{\mathrm{НОД}\,}
+\newcommand{\lcm}{\mathrm{НОК}\,}
 \newcommand*{\bord}{\multicolumn{1}{c|}{}}
 \newcommand{\bigzero}{\makebox(0, 0){\Huge 0}}
 \newcommand{\bigast}{\makebox(0, 0){\Huge \ast}}

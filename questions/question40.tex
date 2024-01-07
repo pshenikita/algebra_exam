@@ -1,0 +1,126 @@
+\section{Предел комплексных последовательностей и функций. Непрерывные функции комплексного аргумента. Непрерывная функция $f: \C \rightarrow \R$ достигает минимума на компакте. Лемма о возрастании модуля}
+
+\begin{definition}
+    Пусть $z_0 \in \C$. Тогда \textbf{$\varepsilon$-окрестность точки} $z_0$ --- это
+    $$
+    U_\varepsilon(z_0) = \big\{z \in \C\:\vcentcolon\: |z - z_0| < \varepsilon\big\}.
+    $$
+\end{definition}
+
+\begin{definition}
+    Пусть $z_1, z_2, \ldots, z_n, \ldots$ --- последовательность комплексных чисел. Будем говорить, что она \textbf{имеет предел} $w \in \C$ при $n \rightarrow \infty$, если для любого $\varepsilon \in \R$, $\varepsilon > 0$ существует $N \in \N$ такое, что для любого $n > N$ выполнено $z_n \in U_\varepsilon(w)$.
+\end{definition}
+
+\begin{lemma}
+    Пусть $z_j = x_j + iy_j$ и $w = u + iv$. Тогда
+    $$
+    \lim_{n \rightarrow \infty} z_n = w \Leftrightarrow
+    \begin{cases}
+        \lim\limits_{n \rightarrow \infty}x_n = u,\\
+        \lim\limits_{n \rightarrow \infty}y_n = v.
+    \end{cases}
+    $$
+\end{lemma}
+
+\begin{proof}
+    $$
+    \begin{array}{c}\displaystyle
+        \lim_{n \rightarrow \infty}z_n = w \Leftrightarrow \lim_{n \rightarrow \infty}|z_n - w| = 0 \Leftrightarrow \lim_{n \rightarrow \infty}\sqrt{(x_n - u)^2 + (y_n - v)^2} = 0 \Leftrightarrow \lim_{n \rightarrow \infty}\big((x_n - u)^2 + (y_n - v)^2\big) = 0 \Leftrightarrow {}\\\displaystyle
+        {} \Leftrightarrow
+        \begin{cases}
+            \lim\limits_{n \rightarrow \infty}x_n = u,\\
+            \lim\limits_{n \rightarrow \infty}y_n = v.
+        \end{cases}
+    \end{array}
+    $$
+\end{proof}
+
+\begin{theorem}
+    Пусть $\lim\limits_{n \rightarrow \infty}z_n = w$ и $\lim\limits_{n \rightarrow \infty}z_n^\ast = w^\ast$. Тогда
+    $$
+    \lim_{n \rightarrow \infty}(z_n + z_n^\ast) = w + w^\ast,\quad\lim_{n \rightarrow \infty}(z_n \cdot z_n^\ast) = w \cdot w^\ast.
+    $$
+\end{theorem}
+
+\begin{proof}
+    По условию $x_n \rightarrow u$, $y_n \rightarrow v$, $x_n^\ast \rightarrow u^\ast$, $y_n^\ast \rightarrow v^\ast$. Тогда $z_n + z_n^\ast = (x_n + x_n^\ast) + i(y_n + y_n^\ast)$. Но $x_n + x_n^\ast \rightarrow u + u^\ast$, $y_n + y_n^\ast \rightarrow v + v^\ast$. Значит, $z_n + z_n^\ast \rightarrow w + w^\ast$. Для умножения аналогично.
+\end{proof}
+
+\begin{definition}
+    Пусть $f: \C \rightarrow \C$ --- функция. Тогда $\lim\limits_{z \rightarrow w}f(z) = c \in \C$, если для каждого $\varepsilon \in \R$, $\varepsilon > 0$ найдётся такое $\delta \in \R$, $\delta > 0$ такое, что при $z \in U_\delta(w)$ выполнено $f(z) \in U_\varepsilon(c)$.
+\end{definition}
+
+Для предела функций верны те же 2 утверждения (доказанных выше), что и для предела последовательностей (со схожим доказательством).
+
+\begin{definition}
+    Функция $f: \C \rightarrow \C$ называется \textbf{непрерывной в точке} $w$, если $\lim\limits_{z \rightarrow w}f(z) = f(w)$.
+\end{definition}
+
+\begin{lemma}
+    Сумма и произведение непрерывных функций --- это непрерывная функция.
+\end{lemma}
+
+Как следствие, многочлен $f \in \C[z]$ задаёт непрерывную функцию $\C \rightarrow \C$.
+
+\begin{definition}
+    Подмножество $L \subset \C$ называется \textbf{открытым}, если для любого $z \in L$ существует $\varepsilon \in \R$, $\varepsilon > 0$ такое, что $U_\varepsilon(z) \subset L$. Подмножество $S \subset \C$ называется \textbf{замкнутым}, если $\C \setminus S$ открыто.
+\end{definition}
+
+\begin{lemma}
+    Пусть $S \subset \C$ замкнуто. Тогда если $z_i \in S$ при всех $i$ и существует предел $\lim\limits_{n \rightarrow \infty}z_n = w$, то $w \in S$.
+\end{lemma}
+
+\begin{proof}
+    Предположим $w \notin S$. Тогда найдётся $\varepsilon \in \R$, $\varepsilon > 0$ такое, что $U_\varepsilon(w) \cap S = \varnothing$. Однако начиная с некоторого номера $z_n \in U_\varepsilon(w)$. Противоречие.
+\end{proof}
+
+\begin{definition}
+    Подмножество $K \subset \C$ называется \textbf{компактом}, если $K$ замкнуто и ограничено. То есть, существует $N \in \R$ такое, что $K \subset \{z\:\vcentcolon\:|z| < N\}$.
+\end{definition}
+
+\begin{lemma}
+    Из любой последовательности в компакте $K$ можно выбрать сходящуюся подпоследовательность.
+\end{lemma}
+
+\begin{proof}
+    Пусть есть последовательность $z_n = x_n + iy_n \in K$. Тогда последовательность $x_n$ ограничена, а значит, можно найти такую подпоследовательность в $z_n$, что $\{x_n\}$ для неё сходится. Аналогично, последовательность $y_n$ ограничена, а значит, мы можем перейти к последовательности, в которой $\{y_n\}$ сходится. Т.\,к. последовательности $\{x_n\}$ и $\{y_n\}$ для этой подпоследовательности имеют предел, то и сама последовательность имеет предел. В силу замкнутости $K$, предел лежит в $K$.
+\end{proof}
+
+\begin{theorem}
+    Непрерывнаяфункция $f: \C \rightarrow \R$ достигает минимума на компакте.
+\end{theorem}
+
+\begin{proof}
+    Пусть $M = \inf\limits_{z \in K}f(z)$. Тогда существует последовательность $z_n \in K$ такая, что $\lim\limits_{n \rightarrow \infty}f(z_n) = M$. Выберем из этой последовательности сходящуюся подпоследовательность. Т.\,к. функция непрерывна, то её значение в предельной точке этой подпоследовательности равно $M$.
+\end{proof}
+
+\begin{lemma}[О возрастании модуля]
+    Пусть $f(z) \in \C[z]$ --- многочлен положительной степени. Тогда $\lim\limits_{|z| \rightarrow \infty}|f(z)| = \infty$. То есть, для каждого $C \in \R$ существует $D \in \R$ такое, что при $|z| > D$ выполнено $|f(z)| > C$.
+\end{lemma}
+
+\begin{proof}
+    Заметим, что $|z| \rightarrow \infty \Leftrightarrow z^{-1} \rightarrow 0$. Пусть
+    $$
+    f(z) = a_0 + a_1z + \ldots + a_nz^n = z^n\left(\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z} + a_n\right).
+    $$
+    Тогда
+    $$
+    |f(z)| = |z^n| \cdot \left|\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z} + a_n\right|.
+    $$
+    Но при $|z| \rightarrow \infty$ выполнено $\displaystyle\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z} \rightarrow 0$. Значит, существует $P \in \R$ такое, что при $|z| > P$ выполнено
+    $$
+    \left|\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z}\right| < \frac{a_n}{2}.
+    $$
+    Для модулей комплексных чисел выполнено неравенство треугольника (модулю --- длина вектора):
+    $$
+    |z_1| - |z_2| \leqslant |z_1 + z_2| \leqslant |z_1| + |z_2|.
+    $$
+    Отсюда
+    $$
+    \left|\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z} + a_n\right| \geqslant |a_n| - \left|\frac{a_0}{z^n} + \frac{a_1}{z^{n - 1}} + \ldots + \frac{a_{n - 1}}{z}\right| > |a_n| - \frac{|a_n|}{2} = \frac{|a_n|}{2}.
+    $$
+    Тогда $|f(z)| > |z^n|\cdot\frac{|a_n|}{2} > D^n\cdot\frac{|a_n|}{2}$. Если $D$ таково, что $D^n\frac{|a_n|}{2} > C$, то $|f(z)| > C$.
+\end{proof}
+
+
+

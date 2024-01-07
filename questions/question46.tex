@@ -1,0 +1,89 @@
+\section{Формальная производная многоченов. Связь значений кратных производных в даной точке с кратностью корня. Кратность корней $\gcd(f, f^\prime)$. Избавление от кратных корней}
+
+\begin{definition}
+    \textbf{Формальная производная} --- это отображение $\mathcal{D}$ алгебры $\mathbb{F}[x]$ в себя, для которого выполняются следующие аксиомы:
+    \begin{enumerate}[nolistsep]
+        \item оно линейно;
+        \item $\mathcal{D}(fg) = (\mathcal{D}f)g + f(\mathcal{D}g)$ (<<правило Лейбница>>);
+        \item $\mathcal{D}x = 1$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Отображение $\mathcal{D}: \mathbb{F}[x] \rightarrow \mathbb{F}[x]$, определённое нами выше, существует и единственно.
+\end{theorem}
+
+\begin{proof}
+    \textbf{Существование}. Построим линейное отображение $\mathcal{D}: \mathbb{F}[x] \rightarrow \mathbb{F}[x]$, задав его на базисных векторах формулами
+    $$
+    \mathcal{D}1 = 0,\quad \mathcal{D}x^n = nx^{n - 1},\quad (n = 1, 2, \ldots),
+    $$
+    и проверим, что оно обладает свойством 2 (остальные очевидно выполняются). В силу линейности достаточно проверить ео только на базисных векторах:
+    $$
+    \mathcal{D}(x^mx^n) = \mathcal{D}x^{m + n} = (m + n)x^{m + n - 1} = mx^{m + n - 1} + mx^{m + n - 1} = (\mathcal{D}x^m)x^n + (\mathcal{D}x^n)x^m.
+    $$
+
+    \textbf{Единственность}. Заметим, что
+    $$
+    \mathcal{D}1 = \mathcal{D}(1 \cdot 1) = \mathcal{D}1 + \mathcal{D}1 \Rightarrow \mathcal{D}1 = 0.
+    $$
+    Докажем по индукции, что $\mathcal{D}(x^n) = n\mathcal{D}x^{n - 1}$. При $n = 1$ это верно по аксиоме 3, а переход от $n - 1$ к $n$ делается выкладкой
+    $$
+    \mathcal{D}x^n = \mathcal{D}(x^{n - 1}x) = (\mathcal{D}x^{n - 1})x + x^{n - 1}(\mathcal{D}x) = (n - 1)x^{n - 2}\cdot x + x^{n - 1} = nx^{n - 1}.
+    $$
+\end{proof}
+
+\begin{definition}
+    Многочлен $\mathcal{D}f$ называется \textbf{производной} многочлена $f$ и обозначается, как обычно, через $f^\prime$.
+\end{definition}
+
+\begin{statement}
+    Если $\mathrm{char}\,\mathbb{F} = 0$, то коэффициенты разложения многочлена $f \in \mathbb{F}[x]$ по степеням $x - c$
+    $$
+    f = b_0 + b_1(x - c) + b_2(x - c)^2 + \ldots = b_n(x - c)^n\eqno(\ast)
+    $$
+    могут быть найдены по формулам
+    $$
+    b_k = \frac{f^{(k)}(c)}{k!}.
+    $$
+\end{statement}
+
+\begin{proof}
+    Продифференцируем равенство $(\ast)$ $k$ раз и подставим $x = c$.
+\end{proof}
+
+\begin{definition}
+    Из предыдущего утверждения можно сделать вывод, что
+    $$
+    f = f(c) + \frac{f^\prime(c)}{1!}(x - c) + \frac{f^{\prime\prime}(c)}{2!}(x - c)^2 + \ldots + \frac{f^{(n)}(c)}{n!}(x - c)^n.
+    $$
+    Эта формула называется \textbf{формулой Тейлора} для многочленов.
+\end{definition}
+
+\begin{theorem}
+    При условии $\mathrm{char}\,\mathbb{F} = 0$ кратность корня $c$ многочлена $f \in \mathbb{F}[x]$ равна наименьшему порядку производной многочлена $f$, не обращающейся в нуль в точке $c$.
+\end{theorem}
+
+\begin{proof}
+    Заметим, что кратность корня $c$ равна номеру первого отличного от нуля коэффициента разложения $(\ast)$. Из формулы Тейлора сразу следует требуемое.
+\end{proof}
+
+Далее идут следствия этой теоремы:
+
+\begin{statement}
+    Пусть $c \in \mathbb{F}$ --- корень кратности $k > 0$ многочлена $f \in \mathbb{F}[x]$. Тогда $c$ --- корень кратности $k - 1$ многочлена $f^\prime$.
+\end{statement}
+
+\begin{statement}
+    Многочлен $\gcd(f, f^\prime)$ своими корнями имеет только кратные корни $f(x)$. Причём, кратности всех корней в многочлене $\gcd(f, f^\prime)$ на $1$ меньше, чем в $f$.
+\end{statement}
+
+\begin{statement}[Избавление от кратных корней]
+    Многочлен
+    $$
+    \frac{f(x)}{\gcd(f, f^\prime)}
+    $$
+    своими корнями имеет все корни $f(x)$ с кратностями $1$.
+\end{statement}
+
+

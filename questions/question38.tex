@@ -1,0 +1,71 @@
+\section{Умножене и деление чисел в тригонометрической форме. Формула Муавра. Извлечение корней из комплексных чисел}
+
+\begin{theorem}
+    При умножении комплексных чисел их модули умножаются, а аргументы складываются.
+\end{theorem}
+
+\begin{proof}
+    Перемножим два числа в тригонометрической форме:
+    $$
+    \begin{array}{c}
+        r(\cos\varphi + i\sin\varphi) \cdot s (\cos\psi + i\sin\psi) = rs((\cos\varphi\cos\psi - \sin\varphi\sin\psi) + i(\cos\varphi\sin\psi + \sin\varphi\cos\psi)) =\\\displaystyle = rs(\cos(\varphi + \psi) + i\sin(\varphi + \psi)).
+    \end{array}
+    $$
+
+    Как следствие, при делении модули делятся, а аргументы вычитаются.
+\end{proof}
+
+\begin{theorem}[Формула Муавра]
+    Для $n \in \Z$ верна формула
+    $$
+    z^n = r^n(\cos n\varphi + i\sin n\varphi).
+    $$
+\end{theorem}
+
+\begin{proof}
+    Для натуральных $n$ утверждение вытекает из кратного применения результата предыдущей теоремы, а для отрицательных $n$ нужно применить результат для положительных и частный случай предыдущей теоремы:
+    $$
+    (r(\cos\varphi + i\sin\varphi))^{-1} = r^{-1}(\cos(-\varphi) + i\sin(-\varphi)).
+    $$
+\end{proof}
+
+\begin{definition}
+    Пусть $n \in \N$, $z \in \C$. Комплексное число $w$ является $n$-ым \textbf{корнем} из $z$, если $w^n = z$. Обозначается $w = \sqrt[n]{z}$.
+\end{definition}
+
+\begin{theorem}
+    Число комплексных корней $\sqrt[n]{z}$ равно
+    $$
+    \begin{cases}
+        1,&\text{ если $z = 0$},\\
+        n,&\text{ если $z \ne 0$}.
+    \end{cases}
+    $$
+\end{theorem}
+
+\begin{proof}
+    Представим $z$ и $w$ в тригонометрическом виде.
+    $$
+    z = r(\cos\varphi + i\sin\varphi),\quad w = s(\cos\psi + i\sin\psi).
+    $$
+    Тогда
+    $$
+    r(\cos\varphi + i\sin\varphi) = z = w^n = s^n(\cos n\psi + i\sin n\psi).
+    $$
+    Мы доказывали, что тригонометрический вид единственный, значит, отсюда следует, что
+    $$
+    \begin{cases}
+        r = s^n,\\
+        \varphi + 2\pi k = n\psi,\ k \in \Z.
+    \end{cases}
+    $$
+
+    Таким образом, $s = \sqrt[n]{r}$ (корень арифметрический), $\psi = (\psi + 2\pi k) / n$, $k \in \Z$. Заметим, что при разных $k = 0, 1, \ldots, n - 1$ получаются различные (не отлицающиеся на $2\pi k$) углы. Отсюда имеем явную формулу для $n$-го корня из $z$:
+    $$
+    \sqrt[n]{z} = \sqrt[n]{z}\left(\cos\left(\frac{\varphi + 2\pi k}{n}\right) + i\sin\left(\frac{\varphi + 2\pi k}{n}\right)\right),\quad k \in \{0, 1, \ldots, n - 1\}.
+    $$
+\end{proof}
+
+\textbf{Геометрическое расположение корней}. Как легко видеть из явной формулы, корни $n$-ые корни из $z$ образуют вершины правильного $n$-угольника с центром в начале координат.
+
+

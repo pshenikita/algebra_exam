@@ -1,0 +1,310 @@
+\section{Понятие группы, абелевой группы. Примеры. Простейшие следствия из аксиом. Подгруппа. Критерий того, что подмножество является подгруппой. Порядок элемента, порядок подстановки. Циклическая группа и её порядок}
+
+\begin{definition}
+    Множество $G$ с одной бинарной операцией $(x, y) \mapsto x \ast y$ называется \textbf{группой}, если выполнены следующие аксиомы:
+    \begin{enumerate}[nolistsep]
+        \item $\forall\!\:x, y, z \in G$ выполнено $(x \ast y) \ast z = x \ast (y \ast z)$.
+        \item $\exists\!\:e \in G$ такой, что $\forall\!\:x \in G$ выполнено $e \ast x = x \ast e = x$.
+        \item $\forall\!\:x \in G$ существует $x^{-1} \in G$ такой, что $x \ast x^{-1} = x^{-1} \ast x = e$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Группа $(G, \ast)$ называется \textbf{абелевой} (\textbf{коммутативной}), если дополнительно выполнена аксиома
+    \begin{enumerate}[nolistsep]
+        \item[4.] $\forall\!\:x, y \in G$ выполнено $x \ast y = y \ast x$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Если для множества с бинарной операцией выполнена только первая аксиома, то оно называется \textbf{полугруппой}, а если ещё и вторая, то \textbf{моноидом}.
+\end{definition}
+
+\begin{definition}
+    \textbf{Порядком группы} $G$ называется мощность множества различных её элементов $|G|$. Если количество элементов в группе $G$ конечно, то группа называется \textbf{конечной}, а иначе --- \textbf{бесконечной}.
+\end{definition}
+
+\begin{remark}
+    Если $A$ --- любое ассоциативное кольцо с единицей, то множество его обратимых элементов является группой по умножению и обозначается $A^\ast$ (доказательство позднее).
+\end{remark}
+
+\textbf{Примеры групп}:
+\begin{enumerate}[nolistsep]
+    \item Числовые группы (все они абелевы): $(\Z, +)$, $(\Q, +)$, $(\R, +)$, $(\Q \setminus 0, \boldsymbol{\cdot})$, $(\R \setminus 0, \boldsymbol{\cdot})$.
+    \item Матрицы по сложению (все они абелевы): $\underset{m \times n}{\mathrm{Mat}}(\R)$, $\underset{m \times n}{\mathrm{Mat}}(\Q)$, $\underset{m \times n}{\mathrm{Mat}}(\Z)$.
+    \item Вычеты $\mod n$ (они абелевы) $(\Z_n, +)$, $Z_n^\ast$.
+    \item Группы подстановок по умножению: (при $n \geqslant 3$ не абелевы): $(S_n, \circ)$, $(A_n, \circ)$.
+    \item Невырожденные матрицы по умножению (при $n \geqslant 2$ не абелевы):
+        $$
+        \mathrm{GL}_n(\R) \vcentcolon= \big(\big\{A \in \underset{n \times n}{\mathrm{Mat}}(\R)\;\vcentcolon\;\det A \ne 0\big\}, \boldsymbol{\cdot}\big),\quad
+        \mathrm{GL}_n(\Q) \vcentcolon= \big(\big\{A \in \underset{n \times n}{\mathrm{Mat}}(\Q)\;\vcentcolon\;\det A \ne 0\big\}, \boldsymbol{\cdot}\big)
+        $$
+    \item Преобразования: $(S(X), \circ)$, где $S(X)$ --- множество биекций множества $X$.
+\end{enumerate}
+
+\textbf{Мультипликативная и аддитивная терминологии}. Во многих примерах операцию $\ast$ мы будем называть умножением (<<Потому что нам так удобно и хочется, и позволяют региональные правила>>). Такие группы будем называть \textbf{мультипликативными}, нейтральный элемент в них \textbf{единицей} (обозначается $e$ или $1$ или $\varepsilon$), а обратный элемент к $x$ обозначать $x^{-1}$.
+
+В других примерах операция --- это сложение, причём обычно с ней получается абелева группа, поэтому операцию в произвольной абелевой группе принято называть сложением. При этом нейтральный элемент называется \textbf{нулём} (обозначается $\boldsymbol{0}$ или $0$), а обратный элемент к $x$ обозначается $-x$.
+
+\begin{theorem}[Простейшие следствия из аксиом]
+    Пусть $G$ --- мультипликативная группа. Тогда
+    \begin{enumerate}[nolistsep]
+        \item Нейтральный элемент в $G$ единственный.
+        \item Обратный элемент к данному единственный.
+        \item $xy = xz \Rightarrow y = z$, $yx = zx \Rightarrow y = z$.
+        \item $xy = e \Rightarrow (x = y^{-1}) \wedge (y = x^{-1})$.
+        \item $(x^{-1})^{-1} = x$.
+        \item Выполнена обобщённая ассоциативность.
+        \item $(xy)^{-1} = (y^{-1}x^{-1})$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[nolistsep]
+        \item Пусть есть два нейтральных элемента $e_1$ и $e_2$. Тогда
+            $$
+            e_1 = e_1e_2 = e_2.
+            $$
+        \item Пусть к элементу $x$ есть два обратных: $(x^{-1})_1$ и $(x^{-1})_2$. Тогда
+            $$
+            (x^{-1})_1 = (x^{-1})_1\big(x\cdot(x^{-1})_2\big) = \big((x^{-1})_1\cdot x\big)(x^{-1})_2 = (x^{-1})_2.
+            $$
+        \item Умножим обе части на $x^{-1}$ слева или справа.
+        \item В самом деле, $g^{-1}g = e \Rightarrow (g^{-1})^{-1} = g$.
+        \item Следствие теоремы 15.1.
+        \item Проверим непосредственно:
+            $$
+            y^{-1}x^{-1}xy = y^{-1}y = e.
+            $$
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть $g \in G$, $k \in \Z$. Определим
+    $$
+    g^k = 
+    \begin{cases}
+        \underbrace{gg\ldots g}_{\text{$k$ раз}},\quad&\text{если $k > 0$},\\
+        e,\quad&\text{если $k = 0$},\\
+        \underbrace{g^{-1}g^{-1}\ldots g^{-1}}_{\text{$-k$ раз}},\quad&\text{если $k < 0$}.
+    \end{cases}
+    $$
+\end{definition}
+
+\begin{lemma}
+    $g^{(k + \ell)} = g^kg^\ell$, $(g^k)^\ell = g^{k\ell}$.
+\end{lemma}
+
+\begin{proof}
+    Заметим, что утверждение очевидно для $k, \ell > 0$. Рассмотрим случай, когда $k > 0$, $\ell < 0$, $k + \ell > 0$. Тогда
+    $$
+    g^kg^\ell = \underbrace{gg\ldots g}_{k}\underbrace{g^{-1}g^{-1}\ldots g^{-1}}_{-\ell} = \underbrace{gg\ldots g}_{k + \ell} = g^{k + \ell},\quad (g^k)^\ell = \underbrace{g^{-k}g^{-k}\ldots g^{-k}}_{-\ell} = g^{k\ell}.
+    $$
+    Аналогично разбираются и другие случаи.
+\end{proof}
+
+\begin{definition}
+    Пусть $(G, \ast)$ --- группа. Подмножество $H \subseteq G$ называется \textbf{подгруппой} группы $G$, если $(H, \ast)$ является группой.
+\end{definition}
+
+\begin{theorem}[Критерий подгруппы]
+    Пусть $H \subseteq G$. Тогда $H$ --- подгруппа $G$ тогда и только тогда, когда
+    \begin{enumerate}
+            \begin{minipage}{.33\textwidth}
+            \item $H \ne \varnothing$
+            \end{minipage}
+            \begin{minipage}{.33\textwidth}
+            \item $h_1, h_2 \in H \Rightarrow h_1 h_2 \in H$
+            \end{minipage}
+            \begin{minipage}{.33\textwidth}
+            \item $h \in H \Rightarrow h^{-1} \in H$
+            \end{minipage}
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Неободимость первых двух условий очевидна. $H$ --- подгруппа, значит, в ней для каждого элемента $h$ есть обратный, при этом он также есть и в $G$ (т.\,к. $H \subseteq G$). Однако обратный элемент к $h$ в $G$ только один, а значит, $h^{-1} \in H$.
+
+    Теперь докажем достаточность. Пусть условия выполнены. Тогда из условий 1 и 2, $H$ --- непустое множество с бинарной операцией (той же, что и в $G$, а значит, ассоциативной). По условию 1 найдётся $h \in H$. По условию 3, $h^{-1} \in H$. По условию 2, $hh^{-1} = e \in H$, то есть, в $H$ есть нейтральный элемент.
+\end{proof}
+
+\begin{remark}
+    Из леммы 31.1 следует, что $(g^k)^{-1} = g^{-k}$. Кроме того, $e = g^0$. Таким образом, степени элемента $g$ образуют подгруппу в группе $G$.
+\end{remark}
+
+\begin{definition}
+    Группа $G$ называется \textbf{циклической}, если она целиком состоит из степеней его элемента $g$. Тогда этот элемент $g$ называется \textbf{порождающим}. Обозначается это так: $G = \langle g\rangle$.
+\end{definition}
+
+\begin{definition}
+    \textbf{Порядком элемента} $g \in G$ называется минимальное натуральное $k$, такое что $g^k = e$. Если же такого числа $k$ не существует, то говорят порядок $k$ считается равным $\infty$. Обозначается порядок элемента $g$ через $\ord g$.
+\end{definition}
+
+\begin{theorem}
+    Порядок подстановки $\sigma \in S_n$ равен наименьшему общему кратному длин циклов в разложении $\sigma$ в произведение независимых циклов.
+\end{theorem}
+
+\begin{proof}
+    Пусть разложение $\sigma$ в произведение независимых циклов имеет вид $\sigma = \xi_1 \circ \ldots \circ \xi_N$, где $\xi_i$ --- цикл длины $\ell_i$. Тогда, т.\,к. независимые циклы коммутируют, выполнено
+    $$
+    \sigma^k = \xi_1^k \circ \ldots \circ \xi_N^k.
+    $$
+
+    При этом подстановки $\xi_1^k, \ldots, \xi_N^k$ переставляют не пересекающиеся множества элементов. Из этого следует, что $\xi_1^k \circ \ldots \circ \xi_N^k = \varepsilon$ тогда и только тогда, когда $\xi_i^k = \varepsilon$ для каждого $i$. Но цикл в степени равен тождественной подстановке тогда и только тогда, когда степень делит длину данного цикла. Так, $\ord \sigma \mid \ell_i$ для каждого $i$ и при этом, $\ord\sigma$ --- минимальное число с таким свойством, то
+    $$
+    \ord\sigma = \mathrm{НОК}(\ell_1, \ldots, \ell_N).
+    $$
+\end{proof}
+
+\begin{statement}[Задача из Винберга]
+    Порядок любого элемента группы $S_n$ не превосходит числа
+    $$
+    e^{n / e} \approx 1{.}44^n.
+    $$
+\end{statement}
+
+\begin{proof}
+    В обозначениях теоремы 31.3 максимальный порядок равен
+    $$
+    \begin{array}{c}\displaystyle
+        \max\limits_{k \in \N}\max\big\{\lcm(\ell_1, \ldots, \ell_k)\;\vcentcolon\;\ell_1, \ldots, \ell_k \in \N, \ell_1 + \ldots + \ell_k = n\big\} \leqslant {}\\\displaystyle{} \leqslant \max\limits_{k \in \N}\max\big\{\ell_1\cdot\ldots\cdot\ell_k\;\vcentcolon\;\ell_1, \ldots, \ell_k \in \N, \ell_1 + \ldots + \ell_k = n\big\} \leqslant {}\\\displaystyle {} \leqslant \max\limits_{k \in \N}\max\big\{\ell_1\cdot\ldots\cdot\ell_k\;\vcentcolon\;\ell_1, \ldots, \ell_k \in \R_+, \ell_1 + \ldots + \ell_k = n\big\} \leqslant \max_{k \in \N}\left(\frac{n}{k}\right)^k \leqslant \max\limits_{k \in \R_+}\left(\frac{n}{k}\right)^k.
+    \end{array}
+    $$
+
+    Осталось лишь найти максимум функции $\displaystyle f_n(x) = \left(\frac{n}{x}\right)^x$ на $\R_+$. Для этого продиффиренцируем её:
+    $$
+    f_n(x) = e^{x\ln\frac{n}{x}},\quad f^\prime(x) = \left(e^{x\ln\frac{n}{x}}\right) = e^{x\ln\frac{n}{x}}\left(\ln\frac{n}{x} + x \cdot \frac{x}{n} \cdot \frac{-n}{x^2}\right) = e^{x\ln\frac{n}{x}}\left(\ln\frac{n}{x} - 1\right).
+    $$
+
+    Отсюда $f_n^\prime(x) = 0 \Leftrightarrow \ln\frac{n}{x} = 1$, отсюда $x = n / e$. Проверим, что нашли точку максимума:
+    \begin{center}
+        \begin{asy}
+            import graph;
+            size(7cm);
+
+            real a = -5, b = 5, xm = 0;
+            xaxis("$x$", a, b, EndArrow(HookHead, 1mm));
+            labelx("$\frac{n}{e}$", 0.1 * S);
+            dot((xm, 0), black + 3bp);
+            labelx("$+$", (a + xm) / 2, N);
+            labelx("$-$", (b + xm) / 2, N);
+        \end{asy}
+    \end{center}
+
+    Из правого луча можно взять число $n$, а из левого --- $\frac{n}{2e}$. Итак, максимум функции $f_n$ (а вместе с ним и верхняя оценка на порядок подстановки порядка $n$) равен $f_n(\frac{n}{e}) = n^{n / e}$.
+\end{proof}
+
+\begin{lemma}
+    Если $\ord g = n$, то
+    \begin{enumerate}[nolistsep]
+        \item $g^m = e \Leftrightarrow n \mid m$;
+        \item $g^k = g^\ell \Leftrightarrow k \equiv \ell\;(\mod n)$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}[nolistsep]
+        \item Разделим $m$ на $n$ с остатком:
+            $$
+            m = qn + r,\quad 0 \leqslant r < n.
+            $$
+
+            Тогда в силу определения порядка
+            $$
+            g^m = (g^n)^q \cdot g^r = g^r = e \Leftrightarrow r = 0.
+            $$
+        \item В силу предыдущего
+            $$
+            g^k = g^\ell \Leftrightarrow g^{k - \ell} = e \Leftrightarrow n \mid (k - \ell) \Leftrightarrow k \equiv \ell\;(\mod n).
+            $$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    $|\langle g\rangle| = \ord g$.
+\end{theorem}
+
+\begin{proof}
+    Пусть $\ord g = n$. Тогда
+    $$
+    \langle g\rangle = \{e, g, g^2, \ldots, g^{n - 1}\},
+    $$
+    причём все перечисленные элементы различны.
+\end{proof}
+
+\begin{lemma}
+    Если $\ord g = n$, то
+    $$
+    \ord g^k = \frac{n}{\gcd(n, k)}
+    $$
+\end{lemma}
+
+\begin{proof}
+    Пусть $\gcd(n, k) = d$, $n = n_1d$, $k = k_1d$, так что $\gcd(n_1, k_1) = 1$. Имеем
+    $$
+    (g^k)^m = e \Leftrightarrow n \mid km \Leftrightarrow n_1 \mid k_1m \Leftrightarrow n_1 \mid m.
+    $$
+    Следовательно, $\ord g^k = n_1$.
+\end{proof}
+
+\begin{definition}
+    Группа $G$ называется \textbf{циклической}, если существует такой элемент $g \in G$, что $G = \langle g\rangle$. Всякий такой элемент называется \textbf{порождающим элементом} группы $G$.
+\end{definition}
+
+\begin{statement}
+    Элемент $g^k$ циклической подгруппы $G = \langle g\rangle$ порядка $n$ является порождающим тогда и только тогда, когда $\gcd(n, k) = 1$.
+\end{statement}
+
+\begin{proof}
+    Очевидное следствие леммы 31.1.
+\end{proof}
+
+\begin{theorem}
+    Всякая бесконечная циклическая группа изоморфна группе $\Z$. Всякая конечная циклическая группа порядка $n$ изоморфна группе $\Z_n$.
+\end{theorem}
+
+\begin{proof}
+    Если $G = \langle g \rangle$ --- бесконечная циклическая группа, то в силу формул леммы 31.1 отображение $f: k \in \Z \mapsto g^k \in G$ есть изоморфизм.
+
+    Пусть теперь $G = \langle g\rangle$ --- конечная группа порядка $n$. Рассмотрим отображение
+    $$
+    f: [k] \in \Z_n \mapsto g^k \in G\quad(k \in \Z).
+    $$
+    Так как
+    $$
+    [k] = [\ell] \Leftrightarrow k \equiv \ell\;(\mod n) \Leftrightarrow g^k = g^\ell,
+    $$
+    то отображение $f$ корректно определено и биективно. Свойство
+    $$
+    f(k + \ell) = f(k) \cdot f(\ell)
+    $$
+    напрямую вытекает из формул леммы 31.1.
+\end{proof}
+
+\begin{theorem}
+    \begin{enumerate}[nolistsep]
+        \item Всякая подгруппа циклической группы является циклической
+        \item В циклической группе порядка $n$ порядок любой подгруппы делит $n$ и для любого делителя $q$ числа $n$ существует ровно одна группа порядка $q$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[nolistsep]
+        \item Пусть $G = \langle g\rangle$ --- циклическая группа и $H$ --- её подгруппа, отличная от $\{e\}$ (единичная подгруппа, очевидно, является циклической). Заметим, что если $g^{-m} \in H$ для какого-либо $m \in \N$, то и $g^m \in H$. Пусть $m$ --- наименьшее из натуральных чисел, для которых $g^m \in H$. Докажем, что $H = \langle g^m\rangle$. Пусть $g^k \in H$. Разделим $k$ на $m$ с остатком:
+            $$
+            k = qm + r,\quad 0 \leqslant r < m.
+            $$
+            Имеем
+            $$
+            g^r = g^k(g^m)^{-q} \in H,
+            $$
+            откуда в силу определения числа $m$ следует, что $r = 0$ и, значит, $g^k = (g^m)^q$.
+        \item Если $|G| = n$, то предыдущее рассуждение, применённое к $k = n$ (в этом случае $g^k = e \in H$), показывает, что $n = qm$. При этом
+            $$
+            H = \{e, g^m, g^{2m}, \ldots, g^{(q - 1)m}\},\eqno(\ast)
+            $$
+            и $H$ является единственной подгруппой порякда $q$ в группе $G$. Обратно, если $q$ --- любой делитель $n$ и $n = qm$, то подмножество $H$, определяемое равенством $(\ast)$, является подгруппой порядка $q$.
+    \end{enumerate}
+\end{proof}
+
+

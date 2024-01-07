@@ -1,0 +1,139 @@
+\section{Гомоморфизм и изоморфизм алгебраических структур. Комплексные числа. Доказательство того, что комплексные числа образуют поле}
+
+\begin{definition}
+    \textbf{Алгебраическая структура} --- это множество $X$ с несколькими операциями $X^n \rightarrow X$ (возможно, для различных $n$), удовлетворяющих некоторым аксиомам.
+\end{definition}
+
+\begin{definition}
+    Пусть есть две алгебраичекие структуры с одинаковым количеством операций от одинакового количества переменных. \textbf{Гомоморфизмом} из одной в другую называется отображение множеств, переводящее операции в операции.
+
+    То есть, если имеем две алгебраические структуры $A$ и $B$ с операциями $\alpha_i: A^{n_i} \rightarrow A$ и $\beta_i: A^{n_i} \rightarrow B$ и $\varphi: A \rightarrow B$ --- гомоморфизм, то
+    $$
+    \varphi(\alpha_i(x_1, \ldots, x_{n_i})) = \beta_i(\varphi(x_1), \ldots, \varphi(x_{n_i})).
+    $$
+
+    Изоморфные структуры одинаковы с алгебраической точки зрения, если какая-то алгебраическая аксиома выполнена для одной структуры, то она выполнена и для изоморфной ей. Изоморфные структуры обозначаются $A \cong B$.
+
+    Изоморфизм из множества на себя называется \textbf{автоморфизмом}.
+\end{definition}
+
+\textbf{Примеры гомоморфизмов}:
+\begin{enumerate}
+        \begin{minipage}{.5\textwidth}
+        \item $\varphi: (\Z, +) \rightarrow (\Z_n, +)$, $\varphi(k) = [k]_n$;
+        \item $(\mathrm{GL}_n(\R), \boldsymbol{\cdot}) \rightarrow (\R^\ast, \boldsymbol{\cdot})$, $\varphi(M) = \det M$;
+        \end{minipage}
+        \begin{minipage}{.5\textwidth}
+        \item $\varphi: (\Z, +, \boldsymbol{\cdot}) \rightarrow (\Z_n, +, \boldsymbol{\cdot})$, $\varphi(k) = [k]_n$;
+        \item $\varphi: (\Z, +, \boldsymbol{\cdot}) \rightarrow (\Q, +, \boldsymbol{\cdot})$, $\varphi(k) = k$.
+        \end{minipage}
+\end{enumerate}
+
+\begin{definition}
+    \textbf{Комплексные числа} --- это множество $\R^2$ с операциями
+    $$
+    (a, b) + (c, d) \vcentcolon = (a + c, b + d),\quad (a, b) \cdot (c, d) \vcentcolon= (ac - bd, ad + bc).
+    $$
+    Множество комплексных чисел обозначается $\C$.
+\end{definition}
+
+\begin{theorem}
+    Комплексные числа образуют поле.
+\end{theorem}
+
+Чтобы доказать теорему, нам понадобится следующая лемма.
+
+\begin{lemma}
+    Алгебраичекая структура комплексных чисел изоморфна алгебраической структуре $\mathbb{M}$ матриц вида
+    $
+    \begin{pmatrix}
+        a & -b\\
+        b & a
+    \end{pmatrix}
+    $, $a, b \in \R$ с операциями сложения и умножения.
+\end{lemma}
+
+\begin{proof}
+    Определим отображение
+    $$
+    \varphi: (a, b) \in \C \mapsto
+    \begin{pmatrix}
+        a & -b\\
+        b & a
+    \end{pmatrix} \in \mathbb{M}.
+    $$
+    Очевидно, что $\varphi$ --- биекция. Кроме того,
+    $$
+        \varphi((a, b) + (c, d)) = \varphi(a + c, b + d) =
+        \begin{pmatrix}
+            a + c & -(b + d)\\
+            b + d & a + c
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            a & -b\\
+            b & a
+        \end{pmatrix} +
+        \begin{pmatrix}
+            c & -d\\
+            d & c
+        \end{pmatrix} = \varphi(a, b) + \varphi(c, d).
+    $$
+    $$
+        \varphi((a, b) \cdot (c, d)) = \varphi(ac - bd, ad + bc) =
+        \begin{pmatrix}
+            ac - bd & -(ad + bc)\\
+            ad + bc & ac - bd
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            a & -b\\
+            b & a
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+            c & -d\\
+            d & c
+        \end{pmatrix} = \varphi(a, b) \cdot \varphi(c, d).
+    $$
+    Таким образом, $\varphi$ --- гомоморфизм. Однако, очевидно, что $\varphi$ --- биекция. То есть, $\varphi$ --- гомоморфизм.
+\end{proof}
+
+Теперь докажем теорему:
+
+\begin{proof}
+    Проверим непосредственно выполнение всех аксиом:
+    \begin{enumerate}
+        \item $\C$ коммутативно относительно умножения, это следует из формулы $(a, b) \cdot (c, d) = (ac - bd, ad + bc)$.
+        \item $\C$ является кольцом, т.\,к., очевидно, является абелевой группой относительно сложения и для него выполнена дистрибутивность, т.\,к. $\C \cong \mathbb{M}$, а для $\mathbb{M}$ она выполнена. Ассоциативность выполнена по той же причине. Далее, в этом кольце есть единица --- $(1, 0)$, и ко всему прочему, каждый ненулевой элемент обратим, т.\,к. $\C \cong \mathbb{M}$ и
+            $$
+            (a, b) \mapsto
+            \begin{pmatrix}
+                a & -b\\
+                b & a
+            \end{pmatrix},\text{{} причём {}}
+            \det\begin{pmatrix}
+                a & -b\\
+                b & a
+            \end{pmatrix}^{-1} = a^2 + b^2.
+            $$
+            Таким образом, эта матрица вырожденна (или, что равносильно, элемент $(a, b)$ обратим) тогда и только тогда, когда $(a, b) = (0, 0)$.
+    \end{enumerate}
+\end{proof}
+
+\textbf{Вложение вещественных чисел}. Рассмотрим отображение
+$$
+\psi: \R \rightarrow \big\{(x, 0) \;\vcentcolon\;x \in \R\big\} \subset \C,\quad \psi(x) = (x, 0).
+$$
+
+Легко видеть, что $\psi$ --- изоморфизм. Таким образом, поле $(\R, +, \boldsymbol{\cdot})$ изоморфно подполю $\C$. В дальнейшем не будем различать эти поля.
+
+Заметим, что $(a, 0) \cdot (c, d) = (ac, ad)$. Получаем, что на $\C$ есть операции сложения и умножения на $\R$. С этими операциями $\C$ --- векторное пространство над $\R$, изоморфное $\R^2$. Его базис --- это $(1, 0) =\vcentcolon 1$ и $(0, 1) =\vcentcolon i$. Заметим, что $i^2 = -1$. Значит, комплексные числа можно записывать в виде $a + bi$.
+
+Причём, операции записываются естественным образом:
+$$
+(a + bi) + (c + di) = (a + b) + (c + d)i,\quad (a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i.
+$$
+
+\begin{definition}
+    Будем называть $i$ \textbf{мнимой единицей}.
+\end{definition}
+
+

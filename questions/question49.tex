@@ -1,0 +1,48 @@
+\section{Теорема Виета. Дискриминант многочлена. Доказательство того, что дискриминант --- многочлен от коэффициентов}
+
+\begin{theorem}[Виет]
+    Пусть многочлен $f \in \mathbb{F}[x]$ имеет $n = \deg f$ корней с учётом кратностей. То есть,
+    $$
+    f = a_0x^n + a_1x^{n - 1} + \ldots + a_n = a_0(x - \alpha_1)(x - \alpha_2)\ldots(x - \alpha_n).
+    $$
+    Тогда
+    $$
+    \sigma_k(\alpha_1, \alpha_2, \ldots, \alpha_n) = (-1)^k\frac{a_i}{a_0},\quad(k = 1, 2, \ldots, n).
+    $$
+\end{theorem}
+
+\begin{proof}
+    $$
+    \begin{array}{c}\displaystyle
+        f = a_0x^n + a_1x^{n - 1} + \ldots + a_kx^{n - k} + \ldots + a_n = 
+        a_0(x - \alpha_1)(x - \alpha_2)\ldots(x - \alpha_n) =\\\displaystyle
+        = a_0\sum_{k = 0}^nx^{n - k}\underbrace{\sum_{i_1 < \ldots < i_k}(-1)^k\alpha_{i_1}\alpha_{i_2}\ldots\alpha_{i_k}}_{(-1)^k\sigma_k} = 
+        a_0\sum_{k = 0}^nx^{n - k}\underbrace{(-1)^k\sigma_k(\alpha_1, \ldots, \alpha_n)}_{a_k}.
+    \end{array}
+    $$
+\end{proof}
+
+\begin{definition}
+    Пусть многочлен $f = a_0x^n + \ldots + a_n$ имеет $n$ корней $\alpha_1, \alpha_2, \ldots, \alpha_n$ с учётом кратности. \textbf{Дискриминант} $D(f)$ многочлена $f \in \mathbb{F}[x]$ равен
+    $$
+    D(f) = a_0^{2n - 2}\prod_{i < j}(\alpha_i - \alpha_j)^2.
+    $$
+\end{definition}
+
+\begin{theorem}[Основное свойство дискриминанта]
+    Пусть многочлен $f = a_0x^n + \ldots + a_n$ имеет $n$ корней $\alpha_1, \alpha_2, \ldots, \alpha_n$ с учётом кратности. $D(f) = 0$ тогда и только тогда, когда у $f$ есть кратные корни.
+\end{theorem}
+
+\begin{proof}
+    Если $D(f) = 0$, то существуют $i$ и $j$ такие, что $x_i = x_j$.
+\end{proof}
+
+\begin{theorem}
+    Пусть многочлен $f = a_0x^n + \ldots + a_n$ имеет $n$ корней $\alpha_1, \alpha_2, \ldots, \alpha_n$ с учётом кратности. Тогда $D(f)$ --- многочлен от коэффициентов $a_i$.
+\end{theorem}
+
+\begin{proof}
+    Из определения дискриминанта $D(f) = a_0^{2n - 2}V^2(\alpha_1, \ldots, \alpha_n)$. Как уже доказывалось, этот многочлен симметрический. Применяя теорему Виета, получаем требуемое.
+\end{proof}
+
+

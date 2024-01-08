@@ -1,0 +1,77 @@
+\section{Результант. Свойства результанта. Связь результанта многочлена и его производной с дискриминантом многочлена. Выражение результанта через определитель (формулировка)}
+
+Пусть даны два многочлена из $\mathbb{F}[x]$:
+$$
+f = a_0x^n + a_1x^{n - 1} + \ldots + a_n,\quad g = b_0x^m + b_1x^{m - 1} + \ldots + b_m.
+$$
+Будем считать, что у них количество корней с учётом кратности равно степени:
+$$
+f = a_0\prod_{i = 1}^N(x - x_i),\quad g = b_0\prod_{j = 1}^m(x - y_j).
+$$
+
+\begin{definition}
+    Результантом $R(f, g)$ многочленов $f$ и $g$ называется число
+    $$
+    a_0^mb_0^n\prod_{1 \leqslant i \leqslant n, 1 \leqslant j \leqslant m}(x_i - y_j).
+    $$
+\end{definition}
+
+\begin{theorem}[Свойства результанта]
+    \begin{enumerate}[nolistsep]
+        \item $R(f, g) = 0$ тогда и только тогда, когда $f$ и $g$ имеют общий корень (<<основное свойство результанта>>);
+        \item $R(g, f) = (-1)^{mn}R(f, g)$;
+        \item $\displaystyle R(f, g) = a_0^m\prod_{i = 1}^ng(x_i) = (-1)^{mn}b_0^n\prod_{j = 1}^mf(y_j)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Свойства 1 и 2 сразу следуют из определения. Второе равенство свойства 3 доказывать тоже не нужно --- оно сразу следует из свойства 2. Итак, докажем первое равенство свойства 3:
+    $$
+    a_0^m\prod_{i = 1}^ng(x_i) = a_0^m\prod_{i = 1}^n\left(b_0\prod_{j = 1}^m(x_i - y_j)\right) = a_0^mb_0^n\prod_{1 \leqslant i \leqslant n, 1 \leqslant j \leqslant m}(x_i - y_j) = R(f, g).
+    $$
+\end{proof}
+
+\begin{theorem}
+    $$
+    R(f, f^\prime) = (-1)^{\frac{n(n - 1)}{2}}a_0D(f).
+    $$
+\end{theorem}
+
+\begin{proof}
+    $f = a_0(x - x_1)\ldots(x - x_n)$. Тогда
+    $$
+    f^\prime(x) = a_0\sum_{i = 1}^n\frac{\prod(x - x_j)}{x - x_i}.
+    $$
+    Имеем
+    $$
+    f^\prime(x_i) = a_0\prod{i \ne j}(x_i - x_j).
+    $$
+    Теперь докажем равенство лобовым вычислением:
+    $$
+    \begin{array}{c}\displaystyle
+        R(f, f^\prime) = a_0^{n - 1}\prod_{i = 1}^nf^\prime(x_i) = a_0^{2n - 1}\prod_{i = 1}^n\prod_{i \ne j}(x_i - x_j) = a_0^{2n - 1}\prod_{i < j}(x_i - x_j)\prod_{i > j}(x_i - x_j) =\\\displaystyle a_0^{2n - 1}\prod_{i < j}(x_i - x_j)(-1)^{\frac{n(n - 1)}{2}}\prod_{i < j}(x_i - x_j) = (-1)^{\frac{n(n - 1)}{2}}a_0^{2n - 1}\prod_{i < j}(x_i - x_j)^2 = (-1)^{\frac{n(n - 1)}{2}}a_0D(f).
+    \end{array}
+    $$
+\end{proof}
+
+\begin{theorem}
+    $$
+    R(f, g) = \det
+    \begin{pmatrix}
+        a_0 & a_1 & a_2 & \cdots & a_n & 0 & 0 & 0 & \cdots & 0\\
+        0 & a_0 & a_1 & a_2 & \cdots & a_n & 0 & 0 & \cdots & 0\\
+        0 & 0 & a_0 & a_1 & a_2 & \cdots & a_n & 0 & \cdots & 0\\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & 0 & \cdots & 0 & a_0 & a_1 & a_2 & \cdots & a_n\\
+        b_0 & b_1 & b_2 & \cdots & b_n & 0 & 0 & 0 & \cdots & 0\\
+        0 & b_0 & b_1 & b_2 & \cdots & b_n & 0 & 0 & \cdots & 0\\
+        0 & 0 & b_0 & b_1 & b_2 & \cdots & b_n & 0 & \cdots & 0\\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & 0 & \cdots & 0 & b_0 & b_1 & b_2 & \cdots & b_n\\
+    \end{pmatrix}
+    $$
+\end{theorem}
+
+Дополнительные билеты допишу потом.
+
+
